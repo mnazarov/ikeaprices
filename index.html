@@ -51,18 +51,27 @@ a:hover {
   border-radius: 4px;
 }
 
+img.demo {
+  float: right;
+  width: 40%;
+  margin: 0 10px 30px 30px;
+  border: 2px #eee solid;
+}
+
 .footer {
   padding: 10px;
   text-align: center;
   background-color: #eee;
   color: #333;
   font-size: 75%;
+  clear: both;
 }
 </style>
 </head>
 <body>
 
 <h1>IKEA price comparison magic button</h1>
+<img src="demo.gif" class="demo">
 
 <h2>1. Choose countries for comparison:</h2>
 <div id = "countries">
@@ -127,8 +136,6 @@ a:hover {
 <h2>3. Navigate to an IKEA product page, like <a href="http://www.ikea.com/be/nl/catalog/products/24286205" target="_blank">this</a></h2>
 
 <h2>4. Click the "compare prices" button you dragged in the 2nd step</h2>
-
-<!-- TODO: screencast gif here (to the right) -->
 
 <div class="footer">
 Note: 
