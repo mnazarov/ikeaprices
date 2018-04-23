@@ -43,7 +43,7 @@ For each country from the list, we need to:
 4. Show it on the current page by creating an element (linking to the
    country page) and appending it to the currently shown price which can be
    found with:
-   `document.getElementById("prodPrice") || document.querySelector("p[itemprop=priceSpecification]")` 
+   `document.getElementById("prodPrice") || document.querySelector("p[itemprop=priceSpecification]") || document.querySelector("span[itemprop=price]")` 
 
 The full code is below:
 
@@ -64,7 +64,9 @@ The full code is below:
             priceA.setAttribute("href", href);
             priceA.appendChild(document.createTextNode(text));
             priceDiv.appendChild(priceA);
-            var priceEl = document.getElementById("prodPrice") || document.querySelector("p[itemprop=priceSpecification]");
+            var priceEl = document.getElementById("prodPrice") || 
+                          document.querySelector("p[itemprop=priceSpecification]") || 
+                          document.querySelector("span[itemprop=price]");
             priceEl.parentElement.appendChild(priceDiv);
         });
     })
