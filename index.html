@@ -16,26 +16,27 @@ h1 {
   font-family: 'Comfortaa', serif;
   padding: 30px;
   text-align: center;
-  background-color: #0051ba; /*0167CB; #c33399;*/
+  background-color: #005e9d; /* #0051ba; /*0167CB; #c33399;*/
   color: white;
 }
 
-ul {
+ul, h3 {
   font-family: 'Roboto Condensed', sans-serif;
+  margin-left: 20px;
 }
 li {
   display:inline-block;
 }
 li.selected a {
-  color: #f63;
+  color: #f60;
 }
 
 a {
-  color: #3399fd; /* #0051ba; */
+  color: #407ab1; /* #3399fd; /* #0051ba; */
   text-decoration: none;
 }
 a:hover {
-  color: #0051ba;
+  color: #2c5379; /* #0051ba; */
   text-decoration: none;
 }
 
@@ -44,8 +45,9 @@ a:hover {
 }
 
 #bookmarklet {
+  margin-left: 20px;
   padding: 10px;
-  background-color: #0051ba;
+  background-color: #005e9d; /* #0051ba; */
   color: white;
   font-weight: bold;
   border-radius: 4px;
@@ -70,8 +72,10 @@ img.demo {
 </head>
 <body>
 
-<h1>IKEA price comparison magic button</h1>
+<h1><span style="background-color:#ffda1a;color:#005e9d;padding:5px;">IKEA</span> price comparison magic button</h1>
 <img src="demo.gif" class="demo">
+
+Quickly compare prices for any IKEA product across multiple countries:
 
 <h2>1. Choose countries for comparison:</h2>
 <div id = "countries">
@@ -128,21 +132,21 @@ img.demo {
 </ul>
 </div>
 
-<h2>2. Drag this link to your bookmarks bar:</h2>
+<h2>2. Drag this button to your bookmarks bar:</h2>
 <p>
 <a id="bookmarklet" href="">check price</a>
 </p>
 
 <h2>3. Navigate to an IKEA product page, like <a href="http://www.ikea.com/be/nl/catalog/products/24286205" target="_blank">this</a></h2>
 
-<h2>4. Click the "compare prices" button you dragged in the 2nd step</h2>
+<h2>4. Click the "check price" button you created in the 2<sup>nd</sup> step</h2>
 
 <div class="footer">
 Note: 
 <!-- This page is not affiliated with IKEA.  -->
 The code relies on the IKEA website structure and may stop working if that changes.
-Prices for products with the same article number are compared.
-Sometimes the same product has different article numbers in different countries, in this case the comparison will not work.
+Prices for products with the same article number are compared. <br>
+The same product can sometimes have different article numbers in different countries, in this case the comparison will not work.
 <a href="https://github.com/mnazarov/ikeaprices">source code and explanation</a>
 </div>
 

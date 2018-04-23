@@ -1,6 +1,5 @@
-/* TODO: 
-	document.getElementById("prodPrice") may not exist (see UK), then use
-	document.querySelector("p[itemprop=priceSpecification]") ?
+/* TODO:
+ * sometimes adding "S" to the article No. may help -> check jQuery.get for failure => redo with S+... 
  */
 
 var hrefStart = "javascript:(function()%7Bvar%20id%20%3D%20document.querySelector(%22span%5Bitemprop%3DproductID%5D%22).innerText.replace(%2F%5C.%2Fg%2C'')%3Bvar%20cnt%20%3D%20window.location.pathname.slice(1,6)%3Bvar%20countries%20%3D%20%5B";
