@@ -11,8 +11,8 @@ See http://mnazarov.github.io/ikeaprices
 # Idea
 
 Living in a small country like Belgium, sometimes it pays to drive over the
-border to get a good deal. Depending on the location in Belgium Within 1-2 hours
-it is possible to reach IKEA in the Netherlands, Germany and France. Out of
+border to get a good deal. Depending on the location in Belgium, within 1-2 hours
+it is possible to reach IKEA in the Netherlands, Germany or France. Out of
 desire to save and curiosity this tool was born.
 
 # Implementation
