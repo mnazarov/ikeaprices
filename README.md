@@ -20,9 +20,7 @@ desire to save and curiosity this tool was born.
 Since most of the IKEA country websites are located at the same www.ikea.com
 domain, we can use AJAX requests to other country websites. This doesn't work for other domains (such as www.ikea.lt) because of Cross-Origin Resource Sharing (CORS) policies.
 
-The product URLs have the following structure:
-
-  `www.ikea.com/**xx**/**yy**/p/**zzz*/`
+The product URLs have the following structure: www\.ikea.com/**xx**/**yy**/p/**zzz**/
    
 where **xx** is the country code (like "be" or "gb"), **yy** is the language
 code ("nl" or "en"), and **zzz** is the product description with article number (like _kyrre-kruk-berken-60416925_).
