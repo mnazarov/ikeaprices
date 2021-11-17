@@ -49,11 +49,11 @@ Now, starting from a product page we can perform the following steps:
    document.querySelector("div.range-revamp-pip-price-package__main-price").appendChild(...)
    ``` 
 
-The full code is below (and in the [ikea.js](ikea.js) file the repostiory):
+The full code is below (and in the [ikea.js](ikea.js) file in the repostiory):
 
 ```js
-// countryList - list of selected countries to compare
-(function() {
+// here `countryList` is an array of selected country/language codes we want to compare to
+function(countryList) {
   //  1. get URL:
   var url = window.location.pathname;
   var urlProd = url.slice(6, );
@@ -77,5 +77,5 @@ The full code is below (and in the [ikea.js](ikea.js) file the repostiory):
       (document.querySelector("div.range-revamp-pip-price-package__main-price")).appendChild(priceDiv);
     });
   })
-})()
+}
 ```
