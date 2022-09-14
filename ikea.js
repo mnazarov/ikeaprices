@@ -1,6 +1,6 @@
 function bookmarklet(countryList) {
   
-  var priceElClass = "pip-pip-price-package__main-price";
+  var priceElClass = "pip-price-module-price-module__price";
   
 	if (/ikea\.com$/.test(window.location.hostname)) {
 		var url = window.location.pathname;
