@@ -1,7 +1,7 @@
 function bookmarklet(countryList) {
   
-  var priceElClass = "pip-price-module-price-module__price";
-  
+  var priceElClass = "pip-temp-price-module__current-price";
+
 	if (/ikea\.com$/.test(window.location.hostname)) {
 		var url = window.location.pathname;
 		var urlProd = url.slice(6, );
@@ -11,14 +11,14 @@ function bookmarklet(countryList) {
 			var href = "https://www.ikea.com/" + cnt + urlProd;
 			fetch(href).then(response => response.text()).then(data => {
 				var doc = new DOMParser().parseFromString(data, "text/html");
-				var price = doc.evaluate("//div[@class='"+priceElClass+"']", doc, null, 4, null).iterateNext();
-				var text = cnt.substr(0, 2) + ': ' + (price === null ? "-" : price.textContent);
+				var price = doc.evaluate("//span[contains(@class, '"+priceElClass+"')]", doc, null, 4, null).iterateNext();
+				var text = cnt.substr(0, 2) + ': ' + (price === null ? "-" : price.firstChild.textContent);
 				var priceDiv = document.createElement("div");
 				var priceA = document.createElement("a");
 				priceA.setAttribute("href", href);
 				priceA.appendChild(document.createTextNode(text));
 				priceDiv.appendChild(priceA);
-				(document.querySelector("div."+priceElClass)).appendChild(priceDiv);
+				(document.querySelector("span."+priceElClass).parentElement.parentElement).appendChild(priceDiv);
 			});
 		})
 	}
