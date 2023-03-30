@@ -11,14 +11,14 @@ function bookmarklet(countryList) {
 			var href = "https://www.ikea.com/" + cnt + urlProd;
 			fetch(href).then(response => response.text()).then(data => {
 				var doc = new DOMParser().parseFromString(data, "text/html");
-				var price = doc.evaluate("//span[contains(@class, '"+priceElClass+"')]", doc, null, 4, null).iterateNext();
+				var price = doc.evaluate("//*[contains(@class, '"+priceElClass+"')]", doc, null, 4, null).iterateNext();
 				var text = cnt.substr(0, 2) + ': ' + (price === null ? "-" : price.firstChild.textContent);
 				var priceDiv = document.createElement("div");
 				var priceA = document.createElement("a");
 				priceA.setAttribute("href", href);
 				priceA.appendChild(document.createTextNode(text));
 				priceDiv.appendChild(priceA);
-				(document.querySelector("span."+priceElClass).parentElement.parentElement).appendChild(priceDiv);
+				(document.querySelector("."+priceElClass).parentElement.parentElement).appendChild(priceDiv);
 			});
 		})
 	}
