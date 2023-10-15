@@ -2,10 +2,8 @@ function bookmarklet(countryList) {
   const priceElClass = "pip-temp-price-module__current-price";
   function createPriceEl(href, cnt, el) {
     fetch(href).then(response => response.text()).then(data => {
-      var price = new DOMParser()
-                .parseFromString(data, "text/html")
-                .evaluate("//*[contains(@class, '"+priceElClass+"')]", doc, null, 4, null)
-                .iterateNext();
+      var doc = new DOMParser().parseFromString(data, "text/html");
+      var price = doc.evaluate("//*[contains(@class, '"+priceElClass+"')]", doc, null, 4, null).iterateNext();
       var text = cnt.substr(0, 2) + ': ' + (price === null ? "-" : price.firstChild.textContent);
       var priceDiv = document.createElement("div");
       var priceA = document.createElement("a");
