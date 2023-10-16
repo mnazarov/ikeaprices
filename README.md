@@ -1,7 +1,6 @@
 # IKEA price comparison magic button
 
-A customizable magic button (bookmarklet) to compare IKEA prices across
-countries.
+A customizable magic button (bookmarklet) to compare IKEA prices across countries.
 
 Try it! &rightarrow; http://mnazarov.github.io/ikeaprices
 
@@ -10,20 +9,21 @@ Try it! &rightarrow; http://mnazarov.github.io/ikeaprices
 
 # Idea
 
-Living in a small country like Belgium, sometimes it pays to drive over the
-border to get a good deal. Depending on the location in Belgium, within 1-2 hours
-it is possible to reach IKEA in the Netherlands, Germany or France. Out of
-desire to save and curiosity this tool was born.
+Living in a small country like Belgium, sometimes it pays to drive over the border to get a good deal.
+Depending on the location in Belgium, within 1-2 hours it is possible to reach IKEA in the Netherlands, Germany or France.
+Out of desire to save and curiosity this tool was born.
 
 # Implementation
 
-Since most of the IKEA international websites are located at the same www.ikea.com domain, we can use client-side AJAX requests to other country websites from any product page.
+Since most of the IKEA international websites are located at the same www.ikea.com domain, we can use client-side AJAX requests to other country websites from any product page, favorites list or shopping cart.
 Unfortunately there are some exceptions, such as www.ikea.lt or www.ikea.cn, and this approach won't work for them because of Cross-Origin Resource Sharing (CORS) policies.
 
 The product URLs have the following structure: www\.ikea.com/**xx**/**yy**/p/**zzz**/
    
-where **xx** is the country code (like "be" or "gb"), **yy** is the language code ("nl" or "en"), and **zzz** is the product description with article number (like _kyrre-kruk-berken-60416925_).
+where **xx** is the country code (like "be" or "gb"), **yy** is the language code ("nl" or "en"), and **zzz** is the product description with article number (like _kyrre-kruk-berken-60416925_) or just article number prefixed with "-".
 Luckily for us, even if the product description part of the URL is language-specific, the same links still work when changing the country/language combination. 
+
+## Product pages
 
 Now, starting from a product page we can perform the following steps:
 
@@ -49,33 +49,9 @@ Now, starting from a product page we can perform the following steps:
    document.querySelector("div.range-revamp-pip-price-package__main-price").appendChild(...)
    ``` 
 
-The full code is below (and in the [ikea.js](ikea.js) file in the repostiory):
+## Favorites list and shopping cart pages
 
-```js
-// here `countryList` is an array of selected country/language codes we want to compare to
-function(countryList) {
-  //  1. get URL:
-  var url = window.location.pathname;
-  var urlProd = url.slice(6, );
-  // 2. get country
-  var cnt = url.slice(1, 6);
-  // 3. loop through country websites and get the prices
-  var countries = countryList.filter(el => el != cnt);
-  countries.forEach(function(cnt) {
-    var href = "https://www.ikea.com/" + cnt + urlProd;
-    fetch(href).then(response => response.text()).then(data => {
-      // get price
-      var doc = new DOMParser().parseFromString(data, "text/html");
-      var price = doc.evaluate("//div[@class='range-revamp-pip-price-package__main-price']", doc, null, 4, null).iterateNext();
-      var text = cnt.substr(0, 2) + ': ' + (price === null ? "-" : price.textContent);
-      // show fetched price next to the current price
-      var priceDiv = document.createElement("div");
-      var priceA = document.createElement("a");
-      priceA.setAttribute("href", href);
-      priceA.appendChild(document.createTextNode(text));
-      priceDiv.appendChild(priceA);
-      (document.querySelector("div.range-revamp-pip-price-package__main-price")).appendChild(priceDiv);
-    });
-  })
-}
-```
+Using similar ideas, we can extend the functionality to pages with multiple products, such as favorites lists and shopping carts.
+Instead of the 1st step above, we identify products on the page and their product URLs, then we fetch the prices for each product as described in steps 2 and 3 above, and finally display the obtained prices on the page.
+
+The full code can be consulted in the [ikea.js](ikea.js) file in the repostiory.
