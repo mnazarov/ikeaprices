@@ -44,7 +44,7 @@ function bookmarklet(countryList) {
           createPriceEl(href, cnt, priceEl.parentElement);
         });
       });
-	} else {
+    } else {
       var urlProd = url.slice(6, );
       countries.forEach(function(cnt) {
         var href = "https://www.ikea.com/" + cnt + urlProd;
