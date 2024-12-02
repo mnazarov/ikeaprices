@@ -1,5 +1,5 @@
 function bookmarklet(countryList) {
-  const priceElClass = "pip-temp-price-module__current-price";
+  const priceElClass = "pip-price-module__current-price";
   function createPriceEl(href, cnt, el) {
     fetch(href).then(response => response.text()).then(data => {
       var doc = new DOMParser().parseFromString(data, "text/html");
