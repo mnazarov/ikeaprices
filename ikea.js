@@ -20,7 +20,7 @@ function bookmarklet(countryList) {
     if (/\/shoppingcart/.test(url)) {
       [...document.querySelectorAll("div[itemscope]")].map(function(el) {
         var urlProd = el.querySelector("a").href;
-        var priceEl = el.querySelector("div[class^='price_total']"); 
+        var priceEl = el.querySelector(".cart-ingka-price__sr-text"); 
         countries.forEach(function(cnt) {
           var href = urlProd.replace(cur, cnt);
           createPriceEl(href, cnt, priceEl.parentElement);
