@@ -1,5 +1,5 @@
 function bookmarklet(countryList) {
-  const priceElClass = "pip-price-module__current-price";
+  const priceElClass = "pipcom-price__sr-text";
   function createPriceEl(href, cnt, el) {
     fetch(href).then(response => response.text()).then(data => {
       var doc = new DOMParser().parseFromString(data, "text/html");
@@ -39,7 +39,7 @@ function bookmarklet(countryList) {
       var urlProd = url.slice(6, );
       countries.forEach(function(cnt) {
         var href = "https://www.ikea.com/" + cnt + urlProd;
-        createPriceEl(href, cnt, document.querySelector("."+priceElClass).parentElement.parentElement);
+        createPriceEl(href, cnt, document.querySelector("."+priceElClass).closest("div").parentElement);
       })
     }
   }
