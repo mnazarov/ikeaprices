@@ -35,6 +35,15 @@ function bookmarklet(countryList) {
           createPriceEl(href, cnt, priceEl.parentElement);
         });
       });
+    } else if (/\/cat\//.test(url)){
+		[...document.querySelectorAll(".plp-mastercard__price")].map(function(el) {
+        var urlProd = el.querySelector("a").href;
+        var priceEl = el.querySelector(".plp-price"); 
+        countries.forEach(function(cnt) {
+          var href = urlProd.replace(cur, cnt);
+          createPriceEl(href, cnt, priceEl.parentElement);
+        });
+      });
     } else {
       var urlProd = url.slice(6, );
       countries.forEach(function(cnt) {
